@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #Authentication Routes (P3 User Story)
+  get 'login', to:'sessions#new' # Displays the login form
+  post 'login', to: 'sessions#create' # Submits the login form (handles happy/sad path logic)
+  delete 'logout', to: 'sessions#destroy' # Logs the user out securely
   root "pages#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
