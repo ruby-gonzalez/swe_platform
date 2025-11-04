@@ -1,0 +1,35 @@
+<% if @user.errors.any? %>
+<div id="error_explanation" class="alert">
+<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<ul>
+<% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+</ul>
+</div>
+<% end %>
+
+<h1>Sign Up</h1>
+
+<%= form_with model: @user, url: signup_path do |form| %>
+<div class="field">
+<%= form.label :email%>
+<%= form.email_field :email %>
+</div>
+
+<div class="field">
+<%= form.label :password%>
+<%= form.password_field :password %>
+</div>
+
+<div class="field">
+<%= form.label :password_confirmation%>
+<%= form.password_field :password_confirmation %>
+</div>
+
+<div class="actions">
+<%= form.submit "Create Account" %>
+</div>
+<% end %>
+
+<p>Already have an account? <%= link_to "Log In", login_path%></p>
